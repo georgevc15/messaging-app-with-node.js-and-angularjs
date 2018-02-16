@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	message =  {
-		content: 'A test meesage',
-		author: 'Max'
+		content: 'A test message',
+		author: 'George'
 	};
 }
