@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { Message } from "./messages/message.model";
 
 @Component({
     selector: 'my-app',
@@ -8,5 +7,5 @@ import { Message } from "./messages/message.model";
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	message: Message =  new Message('A new message', 'George');
+
 }
