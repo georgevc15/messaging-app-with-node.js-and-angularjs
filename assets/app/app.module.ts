@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/Http";
 
 
 import { AppComponent } from "./app.component";
@@ -30,7 +31,13 @@ import { routing } from "./app.routing";
     SignupComponent,
     SigninComponent
     ],
-    imports: [BrowserModule, FormsModule, routing, ReactiveFormsModule],
+    imports: [
+    BrowserModule, 
+    FormsModule, 
+    routing, 
+    ReactiveFormsModule,
+    HttpModule
+    ],
     bootstrap: [AppComponent]
 })
 
