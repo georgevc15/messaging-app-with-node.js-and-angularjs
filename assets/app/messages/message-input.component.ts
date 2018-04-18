@@ -17,12 +17,25 @@ export class MessageInputComponent implements OnInit{
 
 	onSubmit(form: NgForm) {
 		//console.log(form);
-		const message = new Message(form.value.content, 'George');
-		this.messageService.addMessage(message)
-			.subscribe(				
-				data => console.log(data),
-				error => console.log(error)
-				);
+		if(this.message) {
+			//edit
+			this.message.content = form.value.content;
+			this.message = null;
+		} else {
+			//create
+			const message = new Message(form.value.content, 'George');
+			this.messageService.addMessage(message)
+				.subscribe(				
+					data => console.log(data),
+					error => console.log(error)
+					);
+		}
+
+		form.resetForm();
+	}
+
+	onClear(form: NgForm) {
+		this.message = null;
 		form.resetForm();
 	}
 
