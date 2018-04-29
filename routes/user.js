@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
-var User = require('..model/user');
+var User = require('../model/user');
 
 router.post('/', function(req, res, next) {
   	var user = new User({
