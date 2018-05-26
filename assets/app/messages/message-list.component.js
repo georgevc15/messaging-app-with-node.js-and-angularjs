@@ -16,12 +16,16 @@ var MessageListComponent = /** @class */ (function () {
         this.messageservice = messageservice;
     }
     MessageListComponent.prototype.ngOnInit = function () {
-        this.messages = this.messageservice.getMessage();
+        var _this = this;
+        this.messageservice.getMessages()
+            .subscribe(function (messages) {
+            _this.messages = messages;
+        });
     };
     MessageListComponent = __decorate([
         core_1.Component({
             selector: 'app-message-list',
-            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n\t\t\t<app-message\n\t\t\t\t *ngFor=\"let message of messages\"\n\t\t\t\t [message]=\"message\" (editClicked)=\"message.content = $event\">\t\n\t\t\t</app-message>\n\t\t</div>\n\t"
+            template: "\n\t\t<div class=\"col-md-8 col-md-offset-2\">\n\t\t\t<app-message\n\t\t\t\t [message]=\"message\"\n\t\t\t\t *ngFor=\"let message of messages\">\t\n\t\t\t</app-message>\n\t\t</div>\n\t"
         }),
         __metadata("design:paramtypes", [message_service_1.MessageService])
     ], MessageListComponent);

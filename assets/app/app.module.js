@@ -20,6 +20,9 @@ var header_component_1 = require("./header.component");
 var logout_component_1 = require("./auth/logout.component");
 var signup_component_1 = require("./auth/signup.component");
 var signin_component_1 = require("./auth/signin.component");
+var auth_service_1 = require("./auth/auth.service");
+var error_component_1 = require("./errors/error.component");
+var error_service_1 = require("./errors/error.service");
 var app_routing_1 = require("./app.routing");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -36,7 +39,8 @@ var AppModule = /** @class */ (function () {
                 header_component_1.HeaderComponent,
                 logout_component_1.LogoutComponent,
                 signup_component_1.SignupComponent,
-                signin_component_1.SigninComponent
+                signin_component_1.SigninComponent,
+                error_component_1.ErrorComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -45,6 +49,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.ReactiveFormsModule,
                 Http_1.HttpModule
             ],
+            providers: [auth_service_1.AuthService, error_service_1.ErrorService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

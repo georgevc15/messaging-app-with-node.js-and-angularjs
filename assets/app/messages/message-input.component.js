@@ -18,9 +18,28 @@ var MessageInputComponent = /** @class */ (function () {
     }
     MessageInputComponent.prototype.onSubmit = function (form) {
         //console.log(form);
-        var message = new message_model_1.Message(form.value.content, 'George');
-        this.messageService.addMessage(message);
+        if (this.message) {
+            //edit
+            this.message.content = form.value.content;
+            this.messageService.updateMessage(this.message)
+                .subscribe(function (result) { return console.log(result); });
+            this.message = null;
+        }
+        else {
+            //create
+            var message = new message_model_1.Message(form.value.content, 'George');
+            this.messageService.addMessage(message)
+                .subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
+        }
         form.resetForm();
+    };
+    MessageInputComponent.prototype.onClear = function (form) {
+        this.message = null;
+        form.resetForm();
+    };
+    MessageInputComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.messageService.messageIsEdit.subscribe(function (message) { return _this.message = message; });
     };
     MessageInputComponent = __decorate([
         core_1.Component({
