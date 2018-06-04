@@ -10,8 +10,18 @@ var appRoutes = require('./routes/app');
 var messageRoutes = require('./routes/messages');
 var userRoutes = require('./routes/user');
 
+var constants = require('./constants');
+
 var app = express();
-mongoose.connect('mongodb://localhost:27017/node-angular');
+
+var port = process.env.PORT || 3000;
+
+if(port === 3001) {
+	mongoose.connect('mongodb://localhost:27017/node-angular');
+} else {
+    mongoose.connect('mongodb://constants.MONGO_USER:constants.MONGODB_PASS@ds011785.mlab.com:11785/dog-db');
+	//console.log("Aici se va face conectarea cu heroku");
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
