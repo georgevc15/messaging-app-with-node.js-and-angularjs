@@ -19,7 +19,7 @@ addMessage(message: Message) {
 		const token = localStorage.getItem('token') 
 			? '?token=' + localStorage.getItem('token')
 			:  '';
-		return this.http.post('http://localhost:3000/message' + token, body, {headers: headers})
+		return this.http.post('https://https://gentle-tor-56555.herokuapp.com/message' + token, body, {headers: headers})
 			.map((response:Response) =>  {
 				const result = response.json();
 				const message = new Message(
@@ -37,7 +37,7 @@ addMessage(message: Message) {
 	}
 
 	getMessages() {
-		return this.http.get('http://localhost:3000/message')
+		return this.http.get('https://https://gentle-tor-56555.herokuapp.com/message')
 			.map((response: Response) => {
 				const messages = response.json().obj;
 				let transformedMessages: Message[] = [];
@@ -69,7 +69,7 @@ addMessage(message: Message) {
 		const token = localStorage.getItem('token') 
 			? '?token=' + localStorage.getItem('token')
 			:  '';		
-		return this.http.patch('http://localhost:3000/message'+ message.messageId + token, body, {headers: headers})
+		return this.http.patch('https://https://gentle-tor-56555.herokuapp.com/message'+ message.messageId + token, body, {headers: headers})
 			.map((response:Response) =>  response.json())
 			.catch((error: Response) => {	
 				this.errorService.handleError(error.json());
@@ -82,7 +82,7 @@ addMessage(message: Message) {
 		    const token = localStorage.getItem('token') 
 				? '?token=' + localStorage.getItem('token')
 				:  '';
-		return this.http.delete('http://localhost:3000/delete'+ message.messageId + token)
+		return this.http.delete('https://https://gentle-tor-56555.herokuapp.com/delete'+ message.messageId + token)
 			.map((response:Response) =>  response.json())
 			.catch((error: Response) => {	
 				this.errorService.handleError(error.json());
